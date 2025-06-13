@@ -1,0 +1,15 @@
+import nltk
+import re
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+
+def clean_text(text):
+    text = text.lower()  # lowercase
+    text = re.sub(r'[^a-zA-Z\s]', '', text)  
+    text = text.strip()
+    text = ' '.join([word for word in text.split() if word not in stopwords.words('english')])
+    return text
+
+
+df['clean_text'] = df['text'].apply(clean_text)
+df[['text', 'clean_text']]

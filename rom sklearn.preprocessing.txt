@@ -1,0 +1,6 @@
+rom sklearn.preprocessing import LabelEncoder
+
+le = LabelEncoder()
+df['label'] = le.fit_transform(df['sentiment'])
+df[['sentiment', 'label']]
+
